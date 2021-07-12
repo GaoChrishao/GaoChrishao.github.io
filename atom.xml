@@ -1,45 +1,683 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https:// gaochrishao.github.io</id>
-    <title>Gridea</title>
-    <updated>2021-07-12T09:15:15.005Z</updated>
+    <title>GCH&apos;s blog</title>
+    <updated>2021-07-12T09:52:06.033Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https:// gaochrishao.github.io"/>
     <link rel="self" href="https:// gaochrishao.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>GCH&apos;s blog</subtitle>
     <logo>https:// gaochrishao.github.io/images/avatar.png</logo>
     <icon>https:// gaochrishao.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, GCH&apos;s blog</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https:// gaochrishao.github.io/post/hello-gridea/</id>
-        <link href="https:// gaochrishao.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[Linux基本操作]]></title>
+        <id>https:// gaochrishao.github.io/post/linux-ji-ben-cao-zuo/</id>
+        <link href="https:// gaochrishao.github.io/post/linux-ji-ben-cao-zuo/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2021-07-12T09:50:49.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1用户管理">1.用户管理</h2>
+<p>切换用户</p>
+<pre><code class="language-sh">su 用户名
+</code></pre>
+<p>添加用过户</p>
+<pre><code class="language-sh">su useradd 选项 用户名
+
+参数说明：
+选项:
+-c comment 指定一段注释性描述。
+-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+-g 用户组 指定用户所属的用户组。
+-G 用户组，用户组 指定用户所属的附加组。
+-s Shell文件 指定用户的登录Shell。
+-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。
+用户名:
+指定新账号的登录名。
+</code></pre>
+<p>设置用户密码</p>
+<pre><code class="language-sh">su passwd 选项 用户名
+
+可使用的选项：
+-l 锁定口令，即禁用账号。
+-u 口令解锁。
+-d 使账号无口令。
+-f 强迫用户下次登录时修改口令。
+</code></pre>
+<h2 id="2文件">2.文件</h2>
+<pre><code class="language-sh">#find:查找文件
+find / -name filename  全盘查找&quot;filename&quot;文件
+#df:查看磁盘使用情况 
+df -h 
+#du:查看目录中的文件占用大小情况 
+du -sh * | sort -nr 
+#tar:压缩文件 
+tar -cvf test.tar dir1/ dir2/ 压缩dir1和dir2目录的全部文件 压缩包名为：test.tar 
+tar -xvf test.tar 解压test.tar 
+tar -zxvf test.tar.gz 解压test.tar.gz 
+
+#1、*.tar 用 tar –xvf 解压 
+#2、*.gz 用 gzip -d或者gunzip 解压 
+#3、*.tar.gz和*.tgz 用 tar –xzf 解压 
+#4、*.bz2 用 bzip2 -d或者用bunzip2 解压 
+#5、*.tar.bz2用tar –xjf 解压 
+#6、*.Z 用 uncompress 解压 
+#7、*.tar.Z 用tar –xZf 解压 
+#8、*.rar 用 unrar e解压 
+#9、*.zip 用 unzip 解压 
+
+
+</code></pre>
+<p><strong>软链:</strong></p>
+<pre><code class="language-sh">ln -s /mnt/e/Linux/ubuntu ~/ubuntu
+</code></pre>
+<p><strong>磁盘分区:</strong></p>
+<pre><code class="language-sh">#进入parted
+parted
+mkpart
+
+</code></pre>
+<p><strong>磁盘格式化:</strong></p>
+<p>mkntfs -f /dev/sda3</p>
+<p><strong>挂载磁盘：</strong></p>
+<pre><code class="language-sh">#查看已挂载的磁盘
+sudo df -h
+
+#查看所有磁盘
+sudo fdisk -l
+#临时挂载磁盘
+mount -t ntfs-3g /dev/sda3 /storage
+
+#自动挂载：
+#1.修改/etc/fstab,添加一行，例如：
+/dev/sda3 /home/pi/storage ntfs defaults 0 0
+#2.检测文件是否格式正确
+sudo mount -a
+</code></pre>
+<h2 id="3进程">3.进程</h2>
+<pre><code class="language-sh">#ps:查看进程 
+ps -f 查看当前允许的进程 
+ps -ef 查看所有进程
+</code></pre>
+<h2 id="4开机自启脚本编写方式">4.开机自启脚本编写方式</h2>
+<p>1.脚本文件代码示例：</p>
+<p>frps.service</p>
+<pre><code class="language-sh">[Unit]
+Description=auto control fan by tmp
+
+[Service]
+Type=simple
+User=nobody
+WorkingDirectory=/home/pi/Gpio
+ExecStart=/usr/bin/python -u /home/pi/Gpio/tmp.py
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = root
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>etherpad.service</p>
+<pre><code class="language-sh">[Unit]
+Description=在线协同文本编辑器etherpad
+After=network.target  #在网络连接之后
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/etherpad/etherpad-lite/bin/run.sh
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = etherpad  #以etherpad用户运行
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>2.文件复制</p>
+<p>将脚本文件复制到 /usr/lib/systemd/system  路径下</p>
+<p>注:不同的系统放在的位置不一样</p>
+<p>centos:/usr/lib/systemd/system</p>
+<p>pi:/etc/systemd/system/</p>
+<p>3.启动</p>
+<p>systemctl daemon-reload</p>
+<p>systemctl start 脚本名字</p>
+<p>4.查看状态</p>
+<p>systemctl status 脚本名字</p>
+<h2 id="5screen管理会话">5.screen管理会话</h2>
+<pre><code class="language-sh">#screen是一个可以在多个进程（通常是交互式shell）之间复用一个物理终端的全屏幕窗口管理器。即linux下使用多窗口
+
+#常用screen参数
+screen -S session_name           # 新建一个叫session_name的session
+screen -ls（或者screen -list）   # 列出当前所有的session
+screen -r session_name            # 回到session_name这个session
+screen -d session_name           # 远程detach某个session
+screen -d -r session_name        # 结束当前session并回到session_name这个session
+
+
+#进入screen窗口后，想暂时退出（等会还想连接这个screen窗口）
+crtl+a+d
+#退出当前screen窗口，结束当前screen窗口，不想再连接回来（即杀死会话）
+exit或者ctrl+d
+</code></pre>
+<p>在sh脚本中启动</p>
+<pre><code class="language-sh">screen_name1=$&quot;frpc&quot;
+screen -dmS $screen_name1
+screen -x -S $screen_name1 -p 0 -X stuff 'cd ~/ubuntu\n'
+screen -x -S $screen_name1 -p 0 -X stuff './frpc_linux_amd64\n'
+</code></pre>
+<h2 id="6-vim基本操作">6. vim基本操作</h2>
+<p>i：输入模式</p>
+<p>exc：退出输入模式</p>
+<p>dd：删除光标所在行</p>
+<p>dG：删除光标及以下行的内容</p>
+<p>gg：跳转到首行</p>
+<p>3dd：删除光标及以下共3行的内容</p>
+<p>yy：复制光标所在行</p>
+<p>nyy：复制n行</p>
+<p>p：粘贴到光标所在位置</p>
+<p>“:XXX”：跳转到XXX行</p>
+<h2 id="7wifi">7.wifi</h2>
+<p><strong>法一：</strong></p>
+<pre><code class="language-sh">#安装nmcli
+sudo apt-get install nmcli
+#安装nmcli
+sudo apt install network-manager
+
+#查看网络设备
+sudo nmcli dev
+
+#打开wifi
+sudo nmcli r wifi on
+
+#扫描wifi
+sudo nmcli dev wifi
+
+#连接wifi
+sudo nmcli dev wifi connect &quot;wifi名&quot; password &quot;wifi密码&quot;
+
+#1.连接wifi
+sudo nmcli dev wifi connect ssid名称 password WiFi密码 wep-key-type key ifname 无线网卡名称
+#2.查看无线网卡名称及状态
+nmcli device
+#3.查看无线网卡更多配置参数的命令
+nmcli dev wifi help
+</code></pre>
+<p><a href="https://blog.csdn.net/weixin_43669941/article/details/107893322">Ubuntu20.04使用nmcli配置网络连接_ocfbnj的博客-CSDN博客</a></p>
+<p><strong>法二：</strong></p>
+<p>修改 <strong>/boot/wpa_supplicant.conf</strong> 文件</p>
+<h2 id="8性能测试">8.性能测试</h2>
+<pre><code class="language-sh">#安装sysbench
+sudo apt-get install sysbench
+
+#cpu测试
+sysbench --num-threads=4 --test=cpu --cpu-max-prime=20000 run
+
+</code></pre>
+<h2 id="9-定时任务">9. 定时任务</h2>
+<pre><code class="language-sh">crontab -e
+30 2 * * * /home/pi/mc_close.sh
+40 3 * * * /home/pi/mc_open.sh
+
+</code></pre>
+<p>https://blog.csdn.net/u013967628/article/details/83504839</p>
+<h2 id="10-软件安装jdk为例">10. 软件安装(jdk为例)</h2>
+<pre><code class="language-sh">#1.在oracle官网下载指定版本的jdk
+#https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+#2.拷贝到树莓派并解压
+tar -zxvf jdk-8u261-linux-arm64-vfp-hflt.tar.gz
+
+#3.创建软链
+sudo ln -s /home/pi/jdk1.8.0_261/bin/java /usr/bin/java
+</code></pre>
+<h2 id="11-initd">11. init.d</h2>
+<pre><code class="language-sh">#!/bin/bash
+### BEGIN INIT INFO
+#
+# Provides:	 location_server
+# Required-Start:	$local_fs  $remote_fs
+# Required-Stop:	$local_fs  $remote_fs
+# Default-Start: 	2 3 4 5
+# Default-Stop: 	0 1 6
+# Short-Description:	initscript
+# Description: 	This file should be used to construct scripts to be placed in /etc/init.d.
+#
+### END INIT INFO
+ 
+## Fill in name of program here.
+PROG=&quot;java16&quot;
+PROG_PATH=&quot;/usr/bin&quot; ## Not need, but sometimes helpful (if $PROG resides in /opt for example).
+PROG_ARGS=&quot;-jar /home/gch/blogserver.jar&quot; 
+PID_PATH=&quot;/var/run/&quot;
+ 
+start() {
+    if [ -e &quot;$PID_PATH/$PROG.pid&quot; ]; then
+        ## Program is running, exit with error.
+        echo &quot;Error! $PROG is currently running!&quot; 1&gt;&amp;2
+        exit 1
+    else
+        ## Change from /dev/null to something like /var/log/$PROG if you want to save output.
+        $PROG_PATH/$PROG $PROG_ARGS 2&gt;&amp;1 &gt;/var/log/$PROG &amp;
+	$pid=`ps ax | grep -i 'location_server' | sed 's/^\([0-9]\{1,\}\).*/\1/g' | head -n 1`
+ 
+        echo &quot;$PROG started&quot;
+        echo $pid &gt; &quot;$PID_PATH/$PROG.pid&quot;
+    fi
+}
+ 
+stop() {
+    echo &quot;begin stop&quot;
+    if [ -e &quot;$PID_PATH/$PROG.pid&quot; ]; then
+        ## Program is running, so stop it
+	pid=`ps ax | grep -i 'location_server' | sed 's/^\([0-9]\{1,\}\).*/\1/g' | head -n 1`
+	kill $pid
+        
+        rm -f  &quot;$PID_PATH/$PROG.pid&quot;
+        echo &quot;$PROG stopped&quot;
+    else
+        ## Program is not running, exit with error.
+        echo &quot;Error! $PROG not started!&quot; 1&gt;&amp;2
+        exit 1
+    fi
+}
+ 
+## Check to see if we are running as root first.
+## Found at http://www.cyberciti.biz/tips/shell-root-user-check-script.html
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+    echo &quot;This script must be run as root&quot; 1&gt;&amp;2
+    exit 1
+fi
+ 
+case &quot;$1&quot; in
+    start)
+        start
+        exit 0
+    ;;
+    stop)
+        stop
+        exit 0
+    ;;
+    reload|restart|force-reload)
+        stop
+        start
+        exit 0
+    ;;
+    **)
+        echo &quot;Usage: $0 {start|stop|reload}&quot; 1&gt;&amp;2
+        exit 1
+    ;;
+esac
+</code></pre>
+<p>sudo chmod +x /etc/init.d/my_tcp 给脚本添加可执行权限<br>
+sudo /etc/init.d/my_tcp start 启动</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Win10 WSL]]></title>
+        <id>https:// gaochrishao.github.io/post/wsl/</id>
+        <link href="https:// gaochrishao.github.io/post/wsl/">
+        </link>
+        <updated>2021-07-12T09:44:07.000Z</updated>
+        <content type="html"><![CDATA[<p>💻：ubuntu18.0.4</p>
+<h2 id="1基本配置">1.基本配置</h2>
+<h3 id="11-开启ssh">1.1 开启ssh</h3>
+<p>先通过 bash 进入子系统修改配置</p>
+<pre><code class="language-sh">sudo vi /etc/ssh/sshd_config
+</code></pre>
+<p>如果文件不存在说明尚未安装，则执行安装</p>
+<pre><code class="language-sh">sudo apt-get install openssh-server
+</code></pre>
+<p>继续修改配置，下面以密码登录的配置作说明：</p>
+<pre><code class="language-sh">Port = 22 # 默认是22端口，如果和windows端口冲突或你想换成其他的否则不用动
+#ListenAddress 0.0.0.0 # 如果需要指定监听的IP则去除最左侧的井号，并配置对应IP，默认即监听PC所有IP
+PermitRootLogin no # 如果你需要用 root 直接登录系统则此处改为 yes
+PasswordAuthentication no # 将 no 改为 yes 表示使用帐号密码方式登录
+</code></pre>
+<p>主要配置以上几项即可 ,然后启动 ssh 服务</p>
+<pre><code class="language-sh">sudo service ssh start
+</code></pre>
+<p>如果提示 <code>sshd error: could not load host key</code> 则需要重新生成 key</p>
+<pre><code class="language-sh">sudo dpkg-reconfigure openssh-server
+</code></pre>
+<p>查看服务状态</p>
+<pre><code class="language-sh">sudo service ssh status
+# * sshd is running  显示此内容则表示启动正常
+</code></pre>
+<pre><code class="language-sh">passwd root # 设置下密码
+</code></pre>
+<p>配置防火墙开启端口</p>
+<blockquote>
+<p>1.打开 Win10 防火墙设置，（可以通过右下角有个向上的箭头点击盾牌快速进入面板）Windows Defender 安全中心，点击下方的高级设置</p>
+<p>2.选择左侧<code>入站规则</code> 然后点击右侧 <code>新建规则</code></p>
+<p>3.选择 <code>端口</code> -&gt; <code>tcp</code> -&gt; <code>特定端口</code> -&gt; 填入刚刚设置的 Port 默认 <code>22</code> -&gt; 允许连接 -&gt; 提交</p>
+</blockquote>
+<p>参考链接：https://blog.csdn.net/zhouzme/article/details/81087837</p>
+<h3 id="12-开机自启ubuntu以及ssh">1.2 开机自启ubuntu以及ssh</h3>
+<ol>
+<li>
+<p>win+r输入shell:startup</p>
+</li>
+<li>
+<p>创建vbs脚本</p>
+<pre><code class="language-vbscript">Set ws = CreateObject(&quot;Wscript.Shell&quot;)
+ws.run &quot;wsl -d Ubuntu-18.04 -u root /etc/init.wsl start&quot;, vbhide
+</code></pre>
+<p>可以在cmd中使用wsl -l查看发行版的名字</p>
+</li>
+<li>
+<p>登录ubuntu子系统，在/etc/init.wsl文件，写入以下内容</p>
+<pre><code class="language-sh">#! /bin/sh
+/etc/init.d/ssh $1
+</code></pre>
+<p>然后赋予可执行权限</p>
+<pre><code class="language-sh">chmod +x /etc/init.wsl
+</code></pre>
+</li>
+<li>
+<p>编辑sudoers，避免输入密码</p>
+<pre><code class="language-sh">sudo visudo
+</code></pre>
+<p>添加一行</p>
+<pre><code class="language-sh">%sudo ALL=NOPASSWD: /etc/init.wsl
+</code></pre>
+</li>
+<li>
+<p>大功告成，重启电脑试试看吧！</p>
+</li>
+</ol>
+<h3 id="13-换源">1.3 换源</h3>
+<pre><code class="language-sh">sudo vim /etc/apt/sources.list
+</code></pre>
+<pre><code class="language-sh"># 阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</code></pre>
+<pre><code class="language-sh">sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派入门]]></title>
+        <id>https:// gaochrishao.github.io/post/shu-mei-pai-ru-men/</id>
+        <link href="https:// gaochrishao.github.io/post/shu-mei-pai-ru-men/">
+        </link>
+        <updated>2021-07-12T09:29:33.000Z</updated>
+        <content type="html"><![CDATA[<p>💻：树莓派4B 2G内存<br>
+📦：1.设备安装、2.基本配置、3.温控风扇、4.摄像头配置</p>
+<h2 id="1安装">1.安装</h2>
+<h3 id="11-准备工作">1.1 准备工作</h3>
+<blockquote>
+<p>sd卡，&gt;=16GB</p>
+<p>hdmi线</p>
+<p>显示器</p>
+<p>鼠标键盘</p>
+</blockquote>
+<h3 id="12烧入系统">1.2烧入系统</h3>
+<blockquote>
+<p>下载官方NOOBS</p>
+<p>格式化sd卡为fat32格式</p>
+<p>解压NOOBS压缩包到sd卡</p>
+<p>树莓派插卡，接电，连接显示器鼠标键盘</p>
+</blockquote>
+<h3 id="13安装系统">1.3安装系统</h3>
+<blockquote>
+<p>接电后树莓派自动启动</p>
+<p>选择要安装的系统进行安装，等待10min</p>
+<p>重启后进入系统</p>
+</blockquote>
+<h2 id="2基本配置">2.基本配置</h2>
+<h3 id="21-修改密码">2.1 修改密码</h3>
+<blockquote>
+<p>第一次进入系统会要求设置pi账号的密码</p>
+<p>sudo su进入root， 使用passwd root来修改root账号的密码</p>
+</blockquote>
+<h3 id="22-开启ssh和vnc">2.2 开启ssh和vnc</h3>
+<blockquote>
+<p>命令行输入：raspi-config</p>
+<p>选择：5 Interfacing Options</p>
+<p>选择SSH和VNC来开启</p>
+</blockquote>
+<h3 id="23换源">2.3换源</h3>
+<blockquote>
+<p>1.备份源文件</p>
+<pre><code class="language-sh">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo cp /etc/apt/sources.list.d/raspi.list  /etc/apt/sources.list.d/raspi.list.bak
+</code></pre>
+<p>2.修改软件更新源</p>
+<pre><code class="language-sh">sudo nano /etc/apt/sources.list
+</code></pre>
+<p>3.将第一行修改成中科大的软件源地址，「Ctrl+O」进行保存，然后回车，「Ctrl+X」退出。</p>
+<pre><code class="language-sh">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+</code></pre>
+<p>4.修改系统更新源</p>
+<pre><code class="language-sh">sudo nano /etc/apt/sources.list.d/raspi.list
+</code></pre>
+<p>5.将第一行修改成中科大的系统源地址，「Ctrl+O」进行保存，然后回车，「Ctrl+X」退出。</p>
+<pre><code class="language-sh">deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+</code></pre>
+<p>6.同步更新源</p>
+<pre><code class="language-sh">sudo apt-get update
+</code></pre>
+<p>7.更新升级以安装软件包，这个过程耗时较长。</p>
+<pre><code class="language-sh">sudo apt-get upgrade
+</code></pre>
+<p>转载连接:<a href="https://www.jianshu.com/p/768f0181672b">https://www.jianshu.com/p/768f0181672b</a></p>
+</blockquote>
+<h3 id="24ufw防火墙设置">2.4UFW防火墙设置</h3>
+<blockquote>
+<p>1.安装</p>
+<pre><code class="language-sh">sudo apt-get install ufw
+</code></pre>
+<p>2.启用</p>
+<pre><code class="language-sh">sudo ufw enable
+sudo ufw default deny
+</code></pre>
+<p>3.关闭</p>
+<pre><code class="language-sh">sudo ufw disable
+</code></pre>
+<p>4.查看防火墙状态</p>
+<pre><code class="language-sh">sudo ufw status
+</code></pre>
+<p>5.开启/禁用端口或服务举例</p>
+<pre><code class="language-sh">sudo ufw allow 80 允许外部访问80端口
+sudo ufw delete allow 80 禁止外部访问80 端口
+sudo ufw allow from 192.168.1.1 允许此IP访问所有的本机端口
+sudo ufw deny smtp 禁止外部访问smtp服务
+sudo ufw delete allow smtp 删除上面建立的某条规则
+sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 要拒绝所有的流量从TCP的10.0.0.0/8 到端口22的地址192.168.0.1
+</code></pre>
+<p>6.开启端口访问</p>
+<pre><code class="language-sh">sudo ufw allow 22
+sudo ufw allow 3306
+</code></pre>
+</blockquote>
+<h3 id="25蓝牙连接">2.5蓝牙连接</h3>
+<pre><code class="language-sh">#1.打开蓝牙
+sudo service bluetooth start
+#2.进入bluetoothctl
+bluetoothctl
+#3.输入以下命令
+power on 
+agent on 
+default-agent 
+scan on 
+pair yourDeviceMAC
+connect yourDeviceMAC
+</code></pre>
+<h2 id="3温控风扇">3温控风扇</h2>
+<h3 id="31电路连接">3.1电路连接</h3>
+<p>使用设备：三极管s8050	5v电风扇</p>
+<p>连线方式</p>
+<blockquote>
+<p>C极接5V正极，2号或4号引脚<br>
+E极接地，6号引脚<br>
+B极接GPIO引脚口，自己定<br>
+具体引脚位置见这<a href="https://github.com/Yradex/RaspberryPi3_OS/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE-3-UART-%E5%8F%8A-GPIO-%E9%92%88%E8%84%9A%E5%AE%9A%E4%B9%89">树莓派引脚</a></p>
+</blockquote>
+<p>最终连线方式<br>
+![](https:// gaochrishao.github.io/post-images/1626082389805.png)</p>
+<h3 id="32控制代码">3.2控制代码</h3>
+<pre><code class="language-python">#!/usr/bin/python2.7
+#coding:utf-8
+from RPi import GPIO as gpio #注意RPi中的i是小写的
+import time
+#获取cpu的温度
+def get_cpu_temp():
+    with open(&quot;/sys/class/thermal/thermal_zone0/temp&quot;, 'r') as f:
+        temp = float(f.read()) / 1000
+    return temp
+ 
+#监控温度，控制风扇开关
+def check_temp(port):
+    #BOARD编号方式，基于插座引脚编号
+    gpio.setmode(gpio.BOARD)
+    #设置哪个引脚为输出模式
+    gpio.setup(port, gpio.OUT)
+    #标记风扇开关状态
+    is_close = True
+    try:
+        while True:
+            temp = get_cpu_temp()
+            if is_close:
+            #温度大于等于47时，打开引脚，输出电信号
+                if temp&gt;=47:
+                    gpio.output(port, 1)
+                    is_close = False
+                else:
+            #温度降低到42极其以下时，关闭引脚
+                    if temp&lt;=42:
+                        gpio.output(port, 0)
+                        is_close = True
+                
+        #休眠3秒
+            time.sleep(3)
+            print &quot;temp:%s, fan is close:%s&quot; % (temp, is_close)
+    except Exception, e:
+        gpio.cleanup()        
+ 
+if __name__ == '__main__':
+    port = 8
+    check_temp(port)
+
+</code></pre>
+<h3 id="33开机自启脚本">3.3开机自启脚本</h3>
+<pre><code class="language-shell">[Unit]
+Description=auto control fan by tmp
+
+[Service]
+Type=simple
+User=nobody
+WorkingDirectory=/home/pi/Gpio
+ExecStart=/usr/bin/python -u /home/pi/Gpio/tmp.py
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = root
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="34参考连接">3.4参考连接</h3>
+<p><a href="https://blog.csdn.net/oschina_41734362/article/details/80148833">https://blog.csdn.net/oschina_41734362/article/details/80148833</a></p>
+<h2 id="4摄像头配置及使用">4摄像头配置及使用</h2>
+<h3 id="41摄像头的安装">4.1摄像头的安装</h3>
+<blockquote>
+<p>在树莓派上安装好摄像头后</p>
+<p>sudo vim /etc/modules</p>
+<p>在最后一行插入</p>
+<p>bcm2835-v4l2    (l为小写字母L)</p>
+<p>在raspi-config中开启camera</p>
+<p>最后reboot树莓派</p>
+</blockquote>
+<h3 id="42-motion监控系统">4.2 Motion监控系统</h3>
+<blockquote>
+<p>安装</p>
+<pre><code class="language-sh">sudo apt install motion
+</code></pre>
+<p>备份配置文件</p>
+<pre><code class="language-sh">sudo cp /etc/motion/motion.conf /etc/motion/motion.conf.bak
+</code></pre>
+<p>修改配置文件</p>
+<pre><code class="language-sh">vim /etc/motion/motion.conf
+
+daemon on                        #开启守护进程（选配）
+target_dir /home/pi/motion-images    #图片保存的路径
+#videodevice /dev/video0            #摄像头设备（默认）可修改            
+stream_localhost off                 #允许通过网页查看摄像头
+stream_auth_method 2               #开启密码认证
+stream_authentication 用户名:密码    #网页查看摄像头的用户名和密码
+</code></pre>
+</blockquote>
+<h2 id="5-相关软件安装">5 相关软件安装</h2>
+<h3 id="51-oracel-jdk">5.1 oracel jdk</h3>
+<pre><code class="language-sh">#1.在oracle官网下载指定版本的jdk
+#https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+#2.拷贝到树莓派并解压
+tar -zxvf jdk-8u261-linux-arm64-vfp-hflt.tar.gz
+
+#3.创建软链
+sudo ln -s /home/pi/jdk1.8.0_261/bin/java /usr/bin/java
+</code></pre>
+<h3 id="52-rpigpio">5.2 RPi.GPIO</h3>
+<pre><code class="language-sh">sudo apt-get install python3-rpi.gpio
+</code></pre>
+<h2 id="6-rtsp直播推流">6 rtsp直播推流</h2>
+<p>参考链接（本记录中很多需要修改）：</p>
+<p>https://blog.csdn.net/u013062192/article/details/80210166</p>
+<ol>
+<li>
+<p>安装live555</p>
+<pre><code class="language-sh">获取live555最新源码
+wget http://live555.com/liveMedia/public/live555-latest.tar.gz
+解压编译安装
+tar -zxvf live555-latest.tar.gz
+cd live
+sudo ./genMakefiles linux
+sudo make
+sudo make install
+</code></pre>
+</li>
+<li>
+<p>安装库文件</p>
+<pre><code class="language-sh">sudo apt-get update
+sudo apt-get install libavcodec54 
+sudo apt-get install libswscale2
+sudo apt-get install libx264-142
+</code></pre>
+</li>
+<li>
+<p>编译执行工具</p>
+<p><a href="http://git.oschina.net/secho1997/live_camera_linux">下载源码</a> copy到/opt/vc/src/hello_pi/</p>
+<p>根据/hello_pi/下的README编译安装iclient库</p>
+<pre><code class="language-sh">sudo apt-get install libavcodec-dev
+sudo apt-get install libswscale-dev 
+sudo apt-get install libavutil-dev
+</code></pre>
+<p>安装x264</p>
+<pre><code class="language-sh">git clone git://git.videolan.org/x264.git
+cd x264 
+./configure --enable-shared --enable-pthread --enable-pic
+make
+make install
+</code></pre>
+<pre><code class="language-sh">cd live_camera_linux
+sudo make
+sudo make install
+sudo ./zk_v4l2_x264_source
+
+##此部分会报错，需要修改Makefile文件,参考一下参考链接里面的修改方法
+</code></pre>
+<p>若出现</p>
+<pre><code class="language-sh">[2464] WebcamOndemandMediaSubsession .... calling
+using url &quot;rtsp://192.168.1.102:9554/webcam&quot;
+</code></pre>
+<p>则成功</p>
+</li>
+<li>
+<p>播放端：<br>
+使用vlc等工具播放rtsp流： rtsp://IP_of_Raspi:9554/webcam</p>
+</li>
+</ol>
 ]]></content>
     </entry>
 </feed>

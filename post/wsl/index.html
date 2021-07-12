@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Win10 WSL | GCH&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https:// gaochrishao.github.io/favicon.ico?v=1626083504640">
+<link rel="stylesheet" href="https:// gaochrishao.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="💻：ubuntu18.0.4
+1.基本配置
+1.1 开启ssh
+先通过 bash 进入子系统修改配置
+sudo vi /etc/ssh/sshd_config
+
+如果文件不存在说明尚未安装，则执行安装
+sudo apt-get insta..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https:// gaochrishao.github.io">
+        <img src="https:// gaochrishao.github.io/images/avatar.png?v=1626083504640" class="site-logo">
+        <h1 class="site-title">GCH&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/GaoChrishao" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      GCH's blog
+    </div>
+    <div class="site-footer">
+      备案号：皖ICP备19004020号 | <a class="rss" href="https:// gaochrishao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Win10 WSL</h2>
+            <div class="post-date">2021-07-12</div>
+            
+              <div class="feature-container" style="background-image: url('https:// gaochrishao.github.io/post-images/wsl.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>💻：ubuntu18.0.4</p>
+<h2 id="1基本配置">1.基本配置</h2>
+<h3 id="11-开启ssh">1.1 开启ssh</h3>
+<p>先通过 bash 进入子系统修改配置</p>
+<pre><code class="language-sh">sudo vi /etc/ssh/sshd_config
+</code></pre>
+<p>如果文件不存在说明尚未安装，则执行安装</p>
+<pre><code class="language-sh">sudo apt-get install openssh-server
+</code></pre>
+<p>继续修改配置，下面以密码登录的配置作说明：</p>
+<pre><code class="language-sh">Port = 22 # 默认是22端口，如果和windows端口冲突或你想换成其他的否则不用动
+#ListenAddress 0.0.0.0 # 如果需要指定监听的IP则去除最左侧的井号，并配置对应IP，默认即监听PC所有IP
+PermitRootLogin no # 如果你需要用 root 直接登录系统则此处改为 yes
+PasswordAuthentication no # 将 no 改为 yes 表示使用帐号密码方式登录
+</code></pre>
+<p>主要配置以上几项即可 ,然后启动 ssh 服务</p>
+<pre><code class="language-sh">sudo service ssh start
+</code></pre>
+<p>如果提示 <code>sshd error: could not load host key</code> 则需要重新生成 key</p>
+<pre><code class="language-sh">sudo dpkg-reconfigure openssh-server
+</code></pre>
+<p>查看服务状态</p>
+<pre><code class="language-sh">sudo service ssh status
+# * sshd is running  显示此内容则表示启动正常
+</code></pre>
+<pre><code class="language-sh">passwd root # 设置下密码
+</code></pre>
+<p>配置防火墙开启端口</p>
+<blockquote>
+<p>1.打开 Win10 防火墙设置，（可以通过右下角有个向上的箭头点击盾牌快速进入面板）Windows Defender 安全中心，点击下方的高级设置</p>
+<p>2.选择左侧<code>入站规则</code> 然后点击右侧 <code>新建规则</code></p>
+<p>3.选择 <code>端口</code> -&gt; <code>tcp</code> -&gt; <code>特定端口</code> -&gt; 填入刚刚设置的 Port 默认 <code>22</code> -&gt; 允许连接 -&gt; 提交</p>
+</blockquote>
+<p>参考链接：https://blog.csdn.net/zhouzme/article/details/81087837</p>
+<h3 id="12-开机自启ubuntu以及ssh">1.2 开机自启ubuntu以及ssh</h3>
+<ol>
+<li>
+<p>win+r输入shell:startup</p>
+</li>
+<li>
+<p>创建vbs脚本</p>
+<pre><code class="language-vbscript">Set ws = CreateObject(&quot;Wscript.Shell&quot;)
+ws.run &quot;wsl -d Ubuntu-18.04 -u root /etc/init.wsl start&quot;, vbhide
+</code></pre>
+<p>可以在cmd中使用wsl -l查看发行版的名字</p>
+</li>
+<li>
+<p>登录ubuntu子系统，在/etc/init.wsl文件，写入以下内容</p>
+<pre><code class="language-sh">#! /bin/sh
+/etc/init.d/ssh $1
+</code></pre>
+<p>然后赋予可执行权限</p>
+<pre><code class="language-sh">chmod +x /etc/init.wsl
+</code></pre>
+</li>
+<li>
+<p>编辑sudoers，避免输入密码</p>
+<pre><code class="language-sh">sudo visudo
+</code></pre>
+<p>添加一行</p>
+<pre><code class="language-sh">%sudo ALL=NOPASSWD: /etc/init.wsl
+</code></pre>
+</li>
+<li>
+<p>大功告成，重启电脑试试看吧！</p>
+</li>
+</ol>
+<h3 id="13-换源">1.3 换源</h3>
+<pre><code class="language-sh">sudo vim /etc/apt/sources.list
+</code></pre>
+<pre><code class="language-sh"># 阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</code></pre>
+<pre><code class="language-sh">sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https:// gaochrishao.github.io/tag/tag_linux/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https:// gaochrishao.github.io/post/shu-mei-pai-ru-men/">
+                  <h3 class="post-title">
+                    树莓派入门
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

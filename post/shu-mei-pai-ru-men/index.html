@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>树莓派入门 | GCH&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https:// gaochrishao.github.io/favicon.ico?v=1626083504640">
+<link rel="stylesheet" href="https:// gaochrishao.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="💻：树莓派4B 2G内存
+📦：1.设备安装、2.基本配置、3.温控风扇、4.摄像头配置
+1.安装
+1.1 准备工作
+
+sd卡，&gt;=16GB
+hdmi线
+显示器
+鼠标键盘
+
+1.2烧入系统
+
+下载官方NOOBS
+格式化sd卡为fat..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https:// gaochrishao.github.io">
+        <img src="https:// gaochrishao.github.io/images/avatar.png?v=1626083504640" class="site-logo">
+        <h1 class="site-title">GCH&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/GaoChrishao" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      GCH's blog
+    </div>
+    <div class="site-footer">
+      备案号：皖ICP备19004020号 | <a class="rss" href="https:// gaochrishao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">树莓派入门</h2>
+            <div class="post-date">2021-07-12</div>
+            
+              <div class="feature-container" style="background-image: url('https:// gaochrishao.github.io/post-images/shu-mei-pai-ru-men.jfif')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>💻：树莓派4B 2G内存<br>
+📦：1.设备安装、2.基本配置、3.温控风扇、4.摄像头配置</p>
+<h2 id="1安装">1.安装</h2>
+<h3 id="11-准备工作">1.1 准备工作</h3>
+<blockquote>
+<p>sd卡，&gt;=16GB</p>
+<p>hdmi线</p>
+<p>显示器</p>
+<p>鼠标键盘</p>
+</blockquote>
+<h3 id="12烧入系统">1.2烧入系统</h3>
+<blockquote>
+<p>下载官方NOOBS</p>
+<p>格式化sd卡为fat32格式</p>
+<p>解压NOOBS压缩包到sd卡</p>
+<p>树莓派插卡，接电，连接显示器鼠标键盘</p>
+</blockquote>
+<h3 id="13安装系统">1.3安装系统</h3>
+<blockquote>
+<p>接电后树莓派自动启动</p>
+<p>选择要安装的系统进行安装，等待10min</p>
+<p>重启后进入系统</p>
+</blockquote>
+<h2 id="2基本配置">2.基本配置</h2>
+<h3 id="21-修改密码">2.1 修改密码</h3>
+<blockquote>
+<p>第一次进入系统会要求设置pi账号的密码</p>
+<p>sudo su进入root， 使用passwd root来修改root账号的密码</p>
+</blockquote>
+<h3 id="22-开启ssh和vnc">2.2 开启ssh和vnc</h3>
+<blockquote>
+<p>命令行输入：raspi-config</p>
+<p>选择：5 Interfacing Options</p>
+<p>选择SSH和VNC来开启</p>
+</blockquote>
+<h3 id="23换源">2.3换源</h3>
+<blockquote>
+<p>1.备份源文件</p>
+<pre><code class="language-sh">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo cp /etc/apt/sources.list.d/raspi.list  /etc/apt/sources.list.d/raspi.list.bak
+</code></pre>
+<p>2.修改软件更新源</p>
+<pre><code class="language-sh">sudo nano /etc/apt/sources.list
+</code></pre>
+<p>3.将第一行修改成中科大的软件源地址，「Ctrl+O」进行保存，然后回车，「Ctrl+X」退出。</p>
+<pre><code class="language-sh">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+</code></pre>
+<p>4.修改系统更新源</p>
+<pre><code class="language-sh">sudo nano /etc/apt/sources.list.d/raspi.list
+</code></pre>
+<p>5.将第一行修改成中科大的系统源地址，「Ctrl+O」进行保存，然后回车，「Ctrl+X」退出。</p>
+<pre><code class="language-sh">deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+</code></pre>
+<p>6.同步更新源</p>
+<pre><code class="language-sh">sudo apt-get update
+</code></pre>
+<p>7.更新升级以安装软件包，这个过程耗时较长。</p>
+<pre><code class="language-sh">sudo apt-get upgrade
+</code></pre>
+<p>转载连接:<a href="https://www.jianshu.com/p/768f0181672b">https://www.jianshu.com/p/768f0181672b</a></p>
+</blockquote>
+<h3 id="24ufw防火墙设置">2.4UFW防火墙设置</h3>
+<blockquote>
+<p>1.安装</p>
+<pre><code class="language-sh">sudo apt-get install ufw
+</code></pre>
+<p>2.启用</p>
+<pre><code class="language-sh">sudo ufw enable
+sudo ufw default deny
+</code></pre>
+<p>3.关闭</p>
+<pre><code class="language-sh">sudo ufw disable
+</code></pre>
+<p>4.查看防火墙状态</p>
+<pre><code class="language-sh">sudo ufw status
+</code></pre>
+<p>5.开启/禁用端口或服务举例</p>
+<pre><code class="language-sh">sudo ufw allow 80 允许外部访问80端口
+sudo ufw delete allow 80 禁止外部访问80 端口
+sudo ufw allow from 192.168.1.1 允许此IP访问所有的本机端口
+sudo ufw deny smtp 禁止外部访问smtp服务
+sudo ufw delete allow smtp 删除上面建立的某条规则
+sudo ufw deny proto tcp from 10.0.0.0/8 to 192.168.0.1 port 要拒绝所有的流量从TCP的10.0.0.0/8 到端口22的地址192.168.0.1
+</code></pre>
+<p>6.开启端口访问</p>
+<pre><code class="language-sh">sudo ufw allow 22
+sudo ufw allow 3306
+</code></pre>
+</blockquote>
+<h3 id="25蓝牙连接">2.5蓝牙连接</h3>
+<pre><code class="language-sh">#1.打开蓝牙
+sudo service bluetooth start
+#2.进入bluetoothctl
+bluetoothctl
+#3.输入以下命令
+power on 
+agent on 
+default-agent 
+scan on 
+pair yourDeviceMAC
+connect yourDeviceMAC
+</code></pre>
+<h2 id="3温控风扇">3温控风扇</h2>
+<h3 id="31电路连接">3.1电路连接</h3>
+<p>使用设备：三极管s8050	5v电风扇</p>
+<p>连线方式</p>
+<blockquote>
+<p>C极接5V正极，2号或4号引脚<br>
+E极接地，6号引脚<br>
+B极接GPIO引脚口，自己定<br>
+具体引脚位置见这<a href="https://github.com/Yradex/RaspberryPi3_OS/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE-3-UART-%E5%8F%8A-GPIO-%E9%92%88%E8%84%9A%E5%AE%9A%E4%B9%89">树莓派引脚</a></p>
+</blockquote>
+<p>最终连线方式<br>
+![](https:// gaochrishao.github.io/post-images/1626082389805.png)</p>
+<h3 id="32控制代码">3.2控制代码</h3>
+<pre><code class="language-python">#!/usr/bin/python2.7
+#coding:utf-8
+from RPi import GPIO as gpio #注意RPi中的i是小写的
+import time
+#获取cpu的温度
+def get_cpu_temp():
+    with open(&quot;/sys/class/thermal/thermal_zone0/temp&quot;, 'r') as f:
+        temp = float(f.read()) / 1000
+    return temp
+ 
+#监控温度，控制风扇开关
+def check_temp(port):
+    #BOARD编号方式，基于插座引脚编号
+    gpio.setmode(gpio.BOARD)
+    #设置哪个引脚为输出模式
+    gpio.setup(port, gpio.OUT)
+    #标记风扇开关状态
+    is_close = True
+    try:
+        while True:
+            temp = get_cpu_temp()
+            if is_close:
+            #温度大于等于47时，打开引脚，输出电信号
+                if temp&gt;=47:
+                    gpio.output(port, 1)
+                    is_close = False
+                else:
+            #温度降低到42极其以下时，关闭引脚
+                    if temp&lt;=42:
+                        gpio.output(port, 0)
+                        is_close = True
+                
+        #休眠3秒
+            time.sleep(3)
+            print &quot;temp:%s, fan is close:%s&quot; % (temp, is_close)
+    except Exception, e:
+        gpio.cleanup()        
+ 
+if __name__ == '__main__':
+    port = 8
+    check_temp(port)
+
+</code></pre>
+<h3 id="33开机自启脚本">3.3开机自启脚本</h3>
+<pre><code class="language-shell">[Unit]
+Description=auto control fan by tmp
+
+[Service]
+Type=simple
+User=nobody
+WorkingDirectory=/home/pi/Gpio
+ExecStart=/usr/bin/python -u /home/pi/Gpio/tmp.py
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = root
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="34参考连接">3.4参考连接</h3>
+<p><a href="https://blog.csdn.net/oschina_41734362/article/details/80148833">https://blog.csdn.net/oschina_41734362/article/details/80148833</a></p>
+<h2 id="4摄像头配置及使用">4摄像头配置及使用</h2>
+<h3 id="41摄像头的安装">4.1摄像头的安装</h3>
+<blockquote>
+<p>在树莓派上安装好摄像头后</p>
+<p>sudo vim /etc/modules</p>
+<p>在最后一行插入</p>
+<p>bcm2835-v4l2    (l为小写字母L)</p>
+<p>在raspi-config中开启camera</p>
+<p>最后reboot树莓派</p>
+</blockquote>
+<h3 id="42-motion监控系统">4.2 Motion监控系统</h3>
+<blockquote>
+<p>安装</p>
+<pre><code class="language-sh">sudo apt install motion
+</code></pre>
+<p>备份配置文件</p>
+<pre><code class="language-sh">sudo cp /etc/motion/motion.conf /etc/motion/motion.conf.bak
+</code></pre>
+<p>修改配置文件</p>
+<pre><code class="language-sh">vim /etc/motion/motion.conf
+
+daemon on                        #开启守护进程（选配）
+target_dir /home/pi/motion-images    #图片保存的路径
+#videodevice /dev/video0            #摄像头设备（默认）可修改            
+stream_localhost off                 #允许通过网页查看摄像头
+stream_auth_method 2               #开启密码认证
+stream_authentication 用户名:密码    #网页查看摄像头的用户名和密码
+</code></pre>
+</blockquote>
+<h2 id="5-相关软件安装">5 相关软件安装</h2>
+<h3 id="51-oracel-jdk">5.1 oracel jdk</h3>
+<pre><code class="language-sh">#1.在oracle官网下载指定版本的jdk
+#https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+#2.拷贝到树莓派并解压
+tar -zxvf jdk-8u261-linux-arm64-vfp-hflt.tar.gz
+
+#3.创建软链
+sudo ln -s /home/pi/jdk1.8.0_261/bin/java /usr/bin/java
+</code></pre>
+<h3 id="52-rpigpio">5.2 RPi.GPIO</h3>
+<pre><code class="language-sh">sudo apt-get install python3-rpi.gpio
+</code></pre>
+<h2 id="6-rtsp直播推流">6 rtsp直播推流</h2>
+<p>参考链接（本记录中很多需要修改）：</p>
+<p>https://blog.csdn.net/u013062192/article/details/80210166</p>
+<ol>
+<li>
+<p>安装live555</p>
+<pre><code class="language-sh">获取live555最新源码
+wget http://live555.com/liveMedia/public/live555-latest.tar.gz
+解压编译安装
+tar -zxvf live555-latest.tar.gz
+cd live
+sudo ./genMakefiles linux
+sudo make
+sudo make install
+</code></pre>
+</li>
+<li>
+<p>安装库文件</p>
+<pre><code class="language-sh">sudo apt-get update
+sudo apt-get install libavcodec54 
+sudo apt-get install libswscale2
+sudo apt-get install libx264-142
+</code></pre>
+</li>
+<li>
+<p>编译执行工具</p>
+<p><a href="http://git.oschina.net/secho1997/live_camera_linux">下载源码</a> copy到/opt/vc/src/hello_pi/</p>
+<p>根据/hello_pi/下的README编译安装iclient库</p>
+<pre><code class="language-sh">sudo apt-get install libavcodec-dev
+sudo apt-get install libswscale-dev 
+sudo apt-get install libavutil-dev
+</code></pre>
+<p>安装x264</p>
+<pre><code class="language-sh">git clone git://git.videolan.org/x264.git
+cd x264 
+./configure --enable-shared --enable-pthread --enable-pic
+make
+make install
+</code></pre>
+<pre><code class="language-sh">cd live_camera_linux
+sudo make
+sudo make install
+sudo ./zk_v4l2_x264_source
+
+##此部分会报错，需要修改Makefile文件,参考一下参考链接里面的修改方法
+</code></pre>
+<p>若出现</p>
+<pre><code class="language-sh">[2464] WebcamOndemandMediaSubsession .... calling
+using url &quot;rtsp://192.168.1.102:9554/webcam&quot;
+</code></pre>
+<p>则成功</p>
+</li>
+<li>
+<p>播放端：<br>
+使用vlc等工具播放rtsp流： rtsp://IP_of_Raspi:9554/webcam</p>
+</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https:// gaochrishao.github.io/tag/tag_linux/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

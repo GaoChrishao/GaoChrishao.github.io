@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Linux基本操作 | GCH&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https:// gaochrishao.github.io/favicon.ico?v=1626083504640">
+<link rel="stylesheet" href="https:// gaochrishao.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.用户管理
+切换用户
+su 用户名
+
+添加用过户
+su useradd 选项 用户名
+
+参数说明：
+选项:
+-c comment 指定一段注释性描述。
+-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+-..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https:// gaochrishao.github.io">
+        <img src="https:// gaochrishao.github.io/images/avatar.png?v=1626083504640" class="site-logo">
+        <h1 class="site-title">GCH&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/GaoChrishao" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      GCH's blog
+    </div>
+    <div class="site-footer">
+      备案号：皖ICP备19004020号 | <a class="rss" href="https:// gaochrishao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Linux基本操作</h2>
+            <div class="post-date">2021-07-12</div>
+            
+              <div class="feature-container" style="background-image: url('https:// gaochrishao.github.io/post-images/linux-ji-ben-cao-zuo.jfif')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1用户管理">1.用户管理</h2>
+<p>切换用户</p>
+<pre><code class="language-sh">su 用户名
+</code></pre>
+<p>添加用过户</p>
+<pre><code class="language-sh">su useradd 选项 用户名
+
+参数说明：
+选项:
+-c comment 指定一段注释性描述。
+-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+-g 用户组 指定用户所属的用户组。
+-G 用户组，用户组 指定用户所属的附加组。
+-s Shell文件 指定用户的登录Shell。
+-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。
+用户名:
+指定新账号的登录名。
+</code></pre>
+<p>设置用户密码</p>
+<pre><code class="language-sh">su passwd 选项 用户名
+
+可使用的选项：
+-l 锁定口令，即禁用账号。
+-u 口令解锁。
+-d 使账号无口令。
+-f 强迫用户下次登录时修改口令。
+</code></pre>
+<h2 id="2文件">2.文件</h2>
+<pre><code class="language-sh">#find:查找文件
+find / -name filename  全盘查找&quot;filename&quot;文件
+#df:查看磁盘使用情况 
+df -h 
+#du:查看目录中的文件占用大小情况 
+du -sh * | sort -nr 
+#tar:压缩文件 
+tar -cvf test.tar dir1/ dir2/ 压缩dir1和dir2目录的全部文件 压缩包名为：test.tar 
+tar -xvf test.tar 解压test.tar 
+tar -zxvf test.tar.gz 解压test.tar.gz 
+
+#1、*.tar 用 tar –xvf 解压 
+#2、*.gz 用 gzip -d或者gunzip 解压 
+#3、*.tar.gz和*.tgz 用 tar –xzf 解压 
+#4、*.bz2 用 bzip2 -d或者用bunzip2 解压 
+#5、*.tar.bz2用tar –xjf 解压 
+#6、*.Z 用 uncompress 解压 
+#7、*.tar.Z 用tar –xZf 解压 
+#8、*.rar 用 unrar e解压 
+#9、*.zip 用 unzip 解压 
+
+
+</code></pre>
+<p><strong>软链:</strong></p>
+<pre><code class="language-sh">ln -s /mnt/e/Linux/ubuntu ~/ubuntu
+</code></pre>
+<p><strong>磁盘分区:</strong></p>
+<pre><code class="language-sh">#进入parted
+parted
+mkpart
+
+</code></pre>
+<p><strong>磁盘格式化:</strong></p>
+<p>mkntfs -f /dev/sda3</p>
+<p><strong>挂载磁盘：</strong></p>
+<pre><code class="language-sh">#查看已挂载的磁盘
+sudo df -h
+
+#查看所有磁盘
+sudo fdisk -l
+#临时挂载磁盘
+mount -t ntfs-3g /dev/sda3 /storage
+
+#自动挂载：
+#1.修改/etc/fstab,添加一行，例如：
+/dev/sda3 /home/pi/storage ntfs defaults 0 0
+#2.检测文件是否格式正确
+sudo mount -a
+</code></pre>
+<h2 id="3进程">3.进程</h2>
+<pre><code class="language-sh">#ps:查看进程 
+ps -f 查看当前允许的进程 
+ps -ef 查看所有进程
+</code></pre>
+<h2 id="4开机自启脚本编写方式">4.开机自启脚本编写方式</h2>
+<p>1.脚本文件代码示例：</p>
+<p>frps.service</p>
+<pre><code class="language-sh">[Unit]
+Description=auto control fan by tmp
+
+[Service]
+Type=simple
+User=nobody
+WorkingDirectory=/home/pi/Gpio
+ExecStart=/usr/bin/python -u /home/pi/Gpio/tmp.py
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = root
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>etherpad.service</p>
+<pre><code class="language-sh">[Unit]
+Description=在线协同文本编辑器etherpad
+After=network.target  #在网络连接之后
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/etherpad/etherpad-lite/bin/run.sh
+ExecStop=/bin/kill -s TERM &amp;MAINPID
+User = etherpad  #以etherpad用户运行
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>2.文件复制</p>
+<p>将脚本文件复制到 /usr/lib/systemd/system  路径下</p>
+<p>注:不同的系统放在的位置不一样</p>
+<p>centos:/usr/lib/systemd/system</p>
+<p>pi:/etc/systemd/system/</p>
+<p>3.启动</p>
+<p>systemctl daemon-reload</p>
+<p>systemctl start 脚本名字</p>
+<p>4.查看状态</p>
+<p>systemctl status 脚本名字</p>
+<h2 id="5screen管理会话">5.screen管理会话</h2>
+<pre><code class="language-sh">#screen是一个可以在多个进程（通常是交互式shell）之间复用一个物理终端的全屏幕窗口管理器。即linux下使用多窗口
+
+#常用screen参数
+screen -S session_name           # 新建一个叫session_name的session
+screen -ls（或者screen -list）   # 列出当前所有的session
+screen -r session_name            # 回到session_name这个session
+screen -d session_name           # 远程detach某个session
+screen -d -r session_name        # 结束当前session并回到session_name这个session
+
+
+#进入screen窗口后，想暂时退出（等会还想连接这个screen窗口）
+crtl+a+d
+#退出当前screen窗口，结束当前screen窗口，不想再连接回来（即杀死会话）
+exit或者ctrl+d
+</code></pre>
+<p>在sh脚本中启动</p>
+<pre><code class="language-sh">screen_name1=$&quot;frpc&quot;
+screen -dmS $screen_name1
+screen -x -S $screen_name1 -p 0 -X stuff 'cd ~/ubuntu\n'
+screen -x -S $screen_name1 -p 0 -X stuff './frpc_linux_amd64\n'
+</code></pre>
+<h2 id="6-vim基本操作">6. vim基本操作</h2>
+<p>i：输入模式</p>
+<p>exc：退出输入模式</p>
+<p>dd：删除光标所在行</p>
+<p>dG：删除光标及以下行的内容</p>
+<p>gg：跳转到首行</p>
+<p>3dd：删除光标及以下共3行的内容</p>
+<p>yy：复制光标所在行</p>
+<p>nyy：复制n行</p>
+<p>p：粘贴到光标所在位置</p>
+<p>“:XXX”：跳转到XXX行</p>
+<h2 id="7wifi">7.wifi</h2>
+<p><strong>法一：</strong></p>
+<pre><code class="language-sh">#安装nmcli
+sudo apt-get install nmcli
+#安装nmcli
+sudo apt install network-manager
+
+#查看网络设备
+sudo nmcli dev
+
+#打开wifi
+sudo nmcli r wifi on
+
+#扫描wifi
+sudo nmcli dev wifi
+
+#连接wifi
+sudo nmcli dev wifi connect &quot;wifi名&quot; password &quot;wifi密码&quot;
+
+#1.连接wifi
+sudo nmcli dev wifi connect ssid名称 password WiFi密码 wep-key-type key ifname 无线网卡名称
+#2.查看无线网卡名称及状态
+nmcli device
+#3.查看无线网卡更多配置参数的命令
+nmcli dev wifi help
+</code></pre>
+<p><a href="https://blog.csdn.net/weixin_43669941/article/details/107893322">Ubuntu20.04使用nmcli配置网络连接_ocfbnj的博客-CSDN博客</a></p>
+<p><strong>法二：</strong></p>
+<p>修改 <strong>/boot/wpa_supplicant.conf</strong> 文件</p>
+<h2 id="8性能测试">8.性能测试</h2>
+<pre><code class="language-sh">#安装sysbench
+sudo apt-get install sysbench
+
+#cpu测试
+sysbench --num-threads=4 --test=cpu --cpu-max-prime=20000 run
+
+</code></pre>
+<h2 id="9-定时任务">9. 定时任务</h2>
+<pre><code class="language-sh">crontab -e
+30 2 * * * /home/pi/mc_close.sh
+40 3 * * * /home/pi/mc_open.sh
+
+</code></pre>
+<p>https://blog.csdn.net/u013967628/article/details/83504839</p>
+<h2 id="10-软件安装jdk为例">10. 软件安装(jdk为例)</h2>
+<pre><code class="language-sh">#1.在oracle官网下载指定版本的jdk
+#https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+#2.拷贝到树莓派并解压
+tar -zxvf jdk-8u261-linux-arm64-vfp-hflt.tar.gz
+
+#3.创建软链
+sudo ln -s /home/pi/jdk1.8.0_261/bin/java /usr/bin/java
+</code></pre>
+<h2 id="11-initd">11. init.d</h2>
+<pre><code class="language-sh">#!/bin/bash
+### BEGIN INIT INFO
+#
+# Provides:	 location_server
+# Required-Start:	$local_fs  $remote_fs
+# Required-Stop:	$local_fs  $remote_fs
+# Default-Start: 	2 3 4 5
+# Default-Stop: 	0 1 6
+# Short-Description:	initscript
+# Description: 	This file should be used to construct scripts to be placed in /etc/init.d.
+#
+### END INIT INFO
+ 
+## Fill in name of program here.
+PROG=&quot;java16&quot;
+PROG_PATH=&quot;/usr/bin&quot; ## Not need, but sometimes helpful (if $PROG resides in /opt for example).
+PROG_ARGS=&quot;-jar /home/gch/blogserver.jar&quot; 
+PID_PATH=&quot;/var/run/&quot;
+ 
+start() {
+    if [ -e &quot;$PID_PATH/$PROG.pid&quot; ]; then
+        ## Program is running, exit with error.
+        echo &quot;Error! $PROG is currently running!&quot; 1&gt;&amp;2
+        exit 1
+    else
+        ## Change from /dev/null to something like /var/log/$PROG if you want to save output.
+        $PROG_PATH/$PROG $PROG_ARGS 2&gt;&amp;1 &gt;/var/log/$PROG &amp;
+	$pid=`ps ax | grep -i 'location_server' | sed 's/^\([0-9]\{1,\}\).*/\1/g' | head -n 1`
+ 
+        echo &quot;$PROG started&quot;
+        echo $pid &gt; &quot;$PID_PATH/$PROG.pid&quot;
+    fi
+}
+ 
+stop() {
+    echo &quot;begin stop&quot;
+    if [ -e &quot;$PID_PATH/$PROG.pid&quot; ]; then
+        ## Program is running, so stop it
+	pid=`ps ax | grep -i 'location_server' | sed 's/^\([0-9]\{1,\}\).*/\1/g' | head -n 1`
+	kill $pid
+        
+        rm -f  &quot;$PID_PATH/$PROG.pid&quot;
+        echo &quot;$PROG stopped&quot;
+    else
+        ## Program is not running, exit with error.
+        echo &quot;Error! $PROG not started!&quot; 1&gt;&amp;2
+        exit 1
+    fi
+}
+ 
+## Check to see if we are running as root first.
+## Found at http://www.cyberciti.biz/tips/shell-root-user-check-script.html
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+    echo &quot;This script must be run as root&quot; 1&gt;&amp;2
+    exit 1
+fi
+ 
+case &quot;$1&quot; in
+    start)
+        start
+        exit 0
+    ;;
+    stop)
+        stop
+        exit 0
+    ;;
+    reload|restart|force-reload)
+        stop
+        start
+        exit 0
+    ;;
+    **)
+        echo &quot;Usage: $0 {start|stop|reload}&quot; 1&gt;&amp;2
+        exit 1
+    ;;
+esac
+</code></pre>
+<p>sudo chmod +x /etc/init.d/my_tcp 给脚本添加可执行权限<br>
+sudo /etc/init.d/my_tcp start 启动</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https:// gaochrishao.github.io/tag/tag_linux/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https:// gaochrishao.github.io/post/wsl/">
+                  <h3 class="post-title">
+                    Win10 WSL
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
