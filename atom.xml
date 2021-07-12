@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https:// gaochrishao.github.io</id>
+    <id>https://gaochrishao.github.io</id>
     <title>GCH&apos;s blog</title>
-    <updated>2021-07-12T09:52:06.033Z</updated>
+    <updated>2021-07-12T09:56:05.930Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https:// gaochrishao.github.io"/>
-    <link rel="self" href="https:// gaochrishao.github.io/atom.xml"/>
+    <link rel="alternate" href="https://gaochrishao.github.io"/>
+    <link rel="self" href="https://gaochrishao.github.io/atom.xml"/>
     <subtitle>GCH&apos;s blog</subtitle>
-    <logo>https:// gaochrishao.github.io/images/avatar.png</logo>
-    <icon>https:// gaochrishao.github.io/favicon.ico</icon>
+    <logo>https://gaochrishao.github.io/images/avatar.png</logo>
+    <icon>https://gaochrishao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, GCH&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[Linux基本操作]]></title>
-        <id>https:// gaochrishao.github.io/post/linux-ji-ben-cao-zuo/</id>
-        <link href="https:// gaochrishao.github.io/post/linux-ji-ben-cao-zuo/">
+        <id>https://gaochrishao.github.io/post/linux-ji-ben-cao-zuo/</id>
+        <link href="https://gaochrishao.github.io/post/linux-ji-ben-cao-zuo/">
         </link>
         <updated>2021-07-12T09:50:49.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1用户管理">1.用户管理</h2>
@@ -308,8 +308,8 @@ sudo /etc/init.d/my_tcp start 启动</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[Win10 WSL]]></title>
-        <id>https:// gaochrishao.github.io/post/wsl/</id>
-        <link href="https:// gaochrishao.github.io/post/wsl/">
+        <id>https://gaochrishao.github.io/post/wsl/</id>
+        <link href="https://gaochrishao.github.io/post/wsl/">
         </link>
         <updated>2021-07-12T09:44:07.000Z</updated>
         <content type="html"><![CDATA[<p>💻：ubuntu18.0.4</p>
@@ -400,8 +400,8 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
     </entry>
     <entry>
         <title type="html"><![CDATA[树莓派入门]]></title>
-        <id>https:// gaochrishao.github.io/post/shu-mei-pai-ru-men/</id>
-        <link href="https:// gaochrishao.github.io/post/shu-mei-pai-ru-men/">
+        <id>https://gaochrishao.github.io/post/shu-mei-pai-ru-men/</id>
+        <link href="https://gaochrishao.github.io/post/shu-mei-pai-ru-men/">
         </link>
         <updated>2021-07-12T09:29:33.000Z</updated>
         <content type="html"><![CDATA[<p>💻：树莓派4B 2G内存<br>
@@ -517,7 +517,7 @@ B极接GPIO引脚口，自己定<br>
 具体引脚位置见这<a href="https://github.com/Yradex/RaspberryPi3_OS/wiki/%E6%A0%91%E8%8E%93%E6%B4%BE-3-UART-%E5%8F%8A-GPIO-%E9%92%88%E8%84%9A%E5%AE%9A%E4%B9%89">树莓派引脚</a></p>
 </blockquote>
 <p>最终连线方式<br>
-![](https:// gaochrishao.github.io/post-images/1626082389805.png)</p>
+<img src="https://gaochrishao.github.io/post-images/1626082389805.png" alt="" loading="lazy"></p>
 <h3 id="32控制代码">3.2控制代码</h3>
 <pre><code class="language-python">#!/usr/bin/python2.7
 #coding:utf-8
